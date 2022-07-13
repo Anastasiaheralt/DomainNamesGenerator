@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Excuse Generator</title>
+    <title>Domain Generator</title>
     <link
       rel="stylesheet"
       href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
@@ -13,21 +13,15 @@
     <link rel="shortcut icon" href="./4geeks.ico" />
   </head>
   <body>
-    <div class="container">
-      <div class="row">
-        <div class="col"></div>
-        <div class="col">
-          <div id="contenido">
-            <div class="card text-dark bg-info mb-5" style="max-width: 40rem;">
-              <div class="card-header">Domain Generator</div>
-              <div class="card-body">
-                <h5 class="card-title">Tu nombre de dominio podría ser</h5>
-                <p id="domain" class="card-text"></p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col"></div>
+    <div>
+      <div class="jumbotron">
+        <p class="lead">Tu nombre de dominio podría ser...</p>
+        <h1 class="display-4" id="titulo">...</h1>
+        <hr class="my-4" />
+        <div id="domainList"></div>
+        <button class="btn btn-primary btn-lg" id="boton">
+          Generador de dominios
+        </button>
       </div>
     </div>
   </body>

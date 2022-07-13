@@ -7,17 +7,43 @@ let adj = ["gran", "genial", "super"];
 let noun = ["cat", "corredor", "decorador"];
 
 function domainGenerator(pronoun, adj, noun) {
-  let a = Math.floor(Math.random() * pronoun.length);
-  let b = Math.floor(Math.random() * adj.length);
-  let c = Math.floor(Math.random() * noun.length);
+  for (let a = 0; a < pronoun.length; a++) {
+    for (let b = 0; b < adj.length; b++) {
+      for (let c = 0; c < noun.length; c++) {
+        let a = Math.floor(Math.random() * pronoun.length);
+        let b = Math.floor(Math.random() * adj.length);
+        let c = Math.floor(Math.random() * noun.length);
+        let nuevoNombre = document.createTextNode(
+          pronoun[a] + adj[b] + noun[c] + ".com"
+        );
+        let lista = document.getElementById("domainList");
+        let elemento = document.createElement("div");
+        elemento.className = "alert alert-dark";
+        lista.appendChild(elemento);
+        elemento.appendChild(nuevoNombre);
+        let seleccionador = document.createElement("input");
+        seleccionador.className = "form-check-input";
+        seleccionador.setAttribute("type", "radio");
+        seleccionador.setAttribute("name", "opcion");
+        seleccionador.setAttribute("value", nuevoNombre.textContent);
+        elemento.appendChild(seleccionador);
+      }
+    }
+  }
 
-  return pronoun[a] + " " + adj[b] + " " + noun[c] + "" + ".com ";
+  const selectores = document.querySelectorAll("input");
+  for (let i = 0; i < selectores.length; i++) {
+    selectores[i].addEventListener("input", function() {
+      if (selectores[i].checked) {
+        let elegido = selectores[i].value;
+        let titulo = document.querySelector("#titulo");
+        titulo.innerHTML = elegido;
+      }
+    });
+  }
 }
 
-window.onload = function() {
-  //write your code here
-  var domain = document.getElementById("domain");
-  domain.innerHTML = domainGenerator(pronoun, adj, noun);
-};
-
-window.onload = onload;
+document.querySelector("#boton").addEventListener("click", function() {
+  domainGenerator(pronoun, adj, noun);
+  document.querySelector("#boton").style.display = "none";
+});
